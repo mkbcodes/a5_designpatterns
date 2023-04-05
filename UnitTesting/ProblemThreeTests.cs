@@ -8,18 +8,14 @@ using System.Threading.Tasks;
 
 namespace UnitTesting
 {
-    /**
-     * 
-        These tests cover the following scenarios for the Problem 3 solution:
-        1. Test whether a worker can process mail and put it in the correct mailbox.
-        2. Test whether a flagged mail is moved to the review queue.
-        3. Test whether unregistering a worker prevents them from processing mail.
-        4. Test whether multiple workers can process mail simultaneously.
-     * 
-     */
+
+     
     [TestClass]
-    public class MailroomTests
+    public class Problem3
     {
+        /// <summary>
+        /// A test method that verifies the DetermineMailbox method assigns the correct mailbox.
+        /// </summary>
         [TestMethod]
         public void DetermineMailbox_AssignsCorrectMailbox()
         {
@@ -45,6 +41,10 @@ namespace UnitTesting
 
             workerPool.ReleaseWorker(worker);
         }
+
+        /// <summary>
+        /// A test method that verifies the HandleFlaggedMail method places mail in the review queue.
+        /// </summary>
         [TestMethod]
         public void HandleFlaggedMail_PlacesMailInReviewQueue()
         {
@@ -61,17 +61,20 @@ namespace UnitTesting
 
             Worker.ReviewQueue = new List<Mail>(); // Ensure the ReviewQueue is initialized as a List<Mail>
             WorkerPool workerPool = new WorkerPool(1);
-            
-                Worker worker = workerPool.AcquireWorker();
 
-                // Act
-                worker.HandleFlaggedMail(flaggedMail);
+            Worker worker = workerPool.AcquireWorker();
 
-                // Assert
-                Assert.IsTrue(Worker.ReviewQueue.Contains(flaggedMail));
-            
+            // Act
+            worker.HandleFlaggedMail(flaggedMail);
+
+            // Assert
+            Assert.IsTrue(Worker.ReviewQueue.Contains(flaggedMail));
+
         }
 
+        /// <summary>
+        /// A test method that verifies the ProcessMail method dispatches mail to workers and releases to pool.
+        /// </summary>
         [TestMethod]
         public void ProcessMail_DispatchesMailToWorkersAndReleasesToPool()
         {
@@ -86,29 +89,33 @@ namespace UnitTesting
             };
 
             WorkerPool workerPool = new WorkerPool(1);
-            
-                MailDispatcher mailDispatcher = new MailDispatcher(workerPool);
 
-                // Act
-                mailDispatcher.ProcessMail(mail);
+            MailDispatcher mailDispatcher = new MailDispatcher(workerPool);
 
-                // Assert
-                Worker acquiredWorker = workerPool.AcquireWorker();
-                Assert.IsNotNull(acquiredWorker);
-            
+            // Act
+            mailDispatcher.ProcessMail(mail);
+
+            // Assert
+            Worker acquiredWorker = workerPool.AcquireWorker();
+            Assert.IsNotNull(acquiredWorker);
+
         }
 
+        /// <summary>
+        /// A test method that verifies the WorkerPool creates a new worker when no available workers.
+        /// </summary>
         [TestMethod]
         public void WorkerPool_CreatesNewWorkerWhenNoAvailableWorkers()
         {
             // Arrange
             WorkerPool workerPool = new WorkerPool(0);
+
             // Act
             Worker worker = workerPool.AcquireWorker();
 
-                // Assert
-                Assert.IsNotNull(worker);
-            
+            // Assert
+            Assert.IsNotNull(worker);
+
         }
     }
 

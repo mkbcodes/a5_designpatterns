@@ -2,12 +2,16 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Problem3;
 using Problem4;
+using Problem4.Problem4;
 
 namespace AuctionTests
 {
     [TestClass]
-    public class AuctioneerTests
+    public class Problem4
     {
+        /// <summary>
+        /// Tests if placing a bid updates the current bid price for a bidder.
+        /// </summary>
         [TestMethod]
         public void TestBidUpdatesCurrentBidPrice()
         {
@@ -24,6 +28,7 @@ namespace AuctionTests
             // Assert
             Assert.AreEqual(110m, bidder.CurrentBidPrice);
         }
+
     }
 
 

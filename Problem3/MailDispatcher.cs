@@ -6,17 +6,23 @@ using System.Threading.Tasks;
 
 namespace Problem3
 {
-    // Represents a mail dispatcher that handles incoming mail requests and dispatches them to available workers for processing
     public class MailDispatcher
     {
         private readonly IWorkerPool _workerPool;
 
+        /// <summary>
+        /// Initializes a new instance of the MailDispatcher class with a worker pool.
+        /// </summary>
+        /// <param name="workerPool">An instance of the IWorkerPool interface.</param>
         public MailDispatcher(IWorkerPool workerPool)
         {
             _workerPool = workerPool;
         }
 
-        // Receives a mail object, acquires a worker from the worker pool, and dispatches the mail to the worker for processing
+        /// <summary>
+        /// Receives a mail object, acquires a worker from the worker pool, and dispatches the mail to the worker for processing.
+        /// </summary>
+        /// <param name="mail">A Mail object.</param>
         public void ProcessMail(Mail mail)
         {
             Worker worker = _workerPool.AcquireWorker();
@@ -34,5 +40,4 @@ namespace Problem3
             _workerPool.ReleaseWorker(worker);
         }
     }
-
 }

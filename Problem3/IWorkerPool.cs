@@ -6,13 +6,21 @@ using System.Threading.Tasks;
 
 namespace Problem3
 {
-    // Interface to define methods for managing worker objects in the pool
+    /// <summary>
+    /// Interface to define methods for managing worker objects in the pool.
+    /// </summary>
     public interface IWorkerPool
     {
-        // Method to acquire a worker from the pool
+        /// <summary>
+        /// Method to acquire a worker from the pool.
+        /// </summary>
+        /// <returns>A Worker object.</returns>
         Worker AcquireWorker();
 
-        // Method to release a worker back to the pool
+        /// <summary>
+        /// Method to release a worker back to the pool.
+        /// </summary>
+        /// <param name="worker">A Worker object.</param>
         void ReleaseWorker(Worker worker);
     }
 

@@ -6,11 +6,17 @@ using System.Threading.Tasks;
 
 namespace Problem3
 {
-    // Represents a pool of worker objects that can be reused to process mail efficiently
+    /// <summary>
+    /// Represents a pool of worker objects that can be reused to process mail efficiently
+    /// </summary>
     public class WorkerPool : IWorkerPool
     {
         private readonly Queue<Worker> _availableWorkers;
 
+        /// <summary>
+        /// Initializes a new instance of the WorkerPool class with an initial worker count.
+        /// </summary>
+        /// <param name="initialWorkerCount">The number of initial workers in the pool.</param>
         public WorkerPool(int initialWorkerCount)
         {
             _availableWorkers = new Queue<Worker>();
@@ -21,7 +27,10 @@ namespace Problem3
             }
         }
 
-        // Acquires a worker from the pool of available workers
+        /// <summary>
+        /// Acquires a worker from the pool of available workers.
+        /// </summary>
+        /// <returns>A Worker object.</returns>
         public Worker AcquireWorker()
         {
             lock (_availableWorkers)
@@ -37,7 +46,10 @@ namespace Problem3
             }
         }
 
-        // Releases a worker back to the pool of available workers
+        /// <summary>
+        /// Releases a worker back to the pool of available workers.
+        /// </summary>
+        /// <param name="worker">A Worker object.</param>
         public void ReleaseWorker(Worker worker)
         {
             lock (_availableWorkers)

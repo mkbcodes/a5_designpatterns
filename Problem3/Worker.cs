@@ -6,14 +6,23 @@ using System.Threading.Tasks;
 
 namespace Problem3
 {
-    // Represents a worker responsible for processing mail and performing actions such as determining the mailbox, handling flagged mail, and returning to the dispatcher
+    /// <summary>
+    /// Represents a worker responsible for processing mail and performing actions such as determining the mailbox, handling flagged mail, and returning to the dispatcher
+    /// </summary>
     public class Worker
     {
         public static List<Mail> ReviewQueue = new List<Mail>();
 
+        /// <summary>
+        /// Gets or sets the ID of the worker.
+        /// </summary>
         public int WorkerId { get; set; }
 
-        // Method to determine the mailbox for the mail and return the assigned mailbox number
+        /// <summary>
+        /// Determines the mailbox for the mail and returns the assigned mailbox number.
+        /// </summary>
+        /// <param name="mail">A Mail object.</param>
+        /// <returns>A string representing the mailbox number.</returns>
         public string DetermineMailbox(Mail mail)
         {
             // Example implementation: Assign the mail to a mailbox based on the receiver's address
@@ -22,7 +31,10 @@ namespace Problem3
             return mailboxNumber;
         }
 
-        // Method to handle flagged mail and place it in a review queue
+        /// <summary>
+        /// Handles flagged mail and places it in a review queue.
+        /// </summary>
+        /// <param name="mail">A Mail object.</param>
         public void HandleFlaggedMail(Mail mail)
         {
             if (mail.IsFlagged)
@@ -33,13 +45,12 @@ namespace Problem3
             }
         }
 
-        // Method to return to the dispatcher after processing the mail
+        /// <summary>
+        /// Returns to the dispatcher after processing the mail.
+        /// </summary>
         public void ReturnToDispatcher()
         {
-            // Example implementation: Simulate the worker returning to the dispatcher
-            Console.WriteLine($"Worker {WorkerId} has returned to the dispatcher.");
-                // Notify the dispatcher that the worker is available for more work
-            
+            // Notify the dispatcher that the worker is available for more work
         }
     }
 
