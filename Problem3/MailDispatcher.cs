@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Problem3
 {
-    public class MailDispatcher
+    public class MailDispatcher :IDispatcherObserver
     {
         private readonly IWorkerPool _workerPool;
 
@@ -20,12 +20,22 @@ namespace Problem3
         }
 
         /// <summary>
+        /// Releases a worker back to the worker pool.
+        /// </summary>
+        /// <param name="worker">The observer, or the mail room worker.</param>
+        public void OnWorkerAvailable(Worker worker)
+        {
+            _workerPool.ReleaseWorker(worker);
+        }
+
+        /// <summary>
         /// Receives a mail object, acquires a worker from the worker pool, and dispatches the mail to the worker for processing.
         /// </summary>
         /// <param name="mail">A Mail object.</param>
         public void ProcessMail(Mail mail)
         {
             Worker worker = _workerPool.AcquireWorker();
+            worker.DispatcherObserver = this;
 
             // Dispatch the mail to the worker
             worker.DetermineMailbox(mail);
@@ -37,7 +47,7 @@ namespace Problem3
             }
 
             worker.ReturnToDispatcher();
-            _workerPool.ReleaseWorker(worker);
         }
+
     }
 }

@@ -1,13 +1,10 @@
 ﻿
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Problem3;
 using Problem4;
-using Problem4.Problem4;
 
-namespace AuctionTests
+namespace UnitTesting
 {
     [TestClass]
-    public class Problem4
+    public class ProblemFourTests
     {
         /// <summary>
         /// Tests if placing a bid updates the current bid price for a bidder.

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace Problem2
 {
@@ -70,32 +66,32 @@ namespace Problem2
             /// <summary>
             /// The hard drive of the computer.
             /// </summary>
-            public HardDrive HardDrive { get; set; }
+            public HardDrive? HardDrive { get; set; }
 
             /// <summary>
             /// The motherboard of the computer.
             /// </summary>
-            public Motherboard Motherboard { get; set; }
+            public Motherboard? Motherboard { get; set; }
 
             /// <summary>
             /// The CPU of the computer.
             /// </summary>
-            public CPU Cpu { get; set; }
+            public CPU? Cpu { get; set; }
 
             /// <summary>
             /// The memory of the computer.
             /// </summary>
-            public Memory Memory { get; set; }
+            public Memory? Memory { get; set; }
 
             /// <summary>
             /// The graphics card of the computer.
             /// </summary>
-            public GraphicsCard GraphicsCard { get; set; }
+            public GraphicsCard? GraphicsCard { get; set; }
 
             /// <summary>
             /// The case of the computer.
             /// </summary>
-            public Case Case { get; set; }
+            public Case? Case { get; set; }
         }
 
 
@@ -104,6 +100,9 @@ namespace Problem2
         /// </summary>
         public class ComputerBuilder
         {
+            /// <summary>
+            /// This is the computer that is being built.
+            /// </summary>
             private Computer _computer;
 
             /// <summary>
@@ -211,12 +210,12 @@ namespace Problem2
             /// <summary>
             /// The manufacturer of the CPU.
             /// </summary>
-            public string Manufacturer { get; set; }
+            public string? Manufacturer { get; set; }
 
             /// <summary>
             /// The socket type of the CPU.
             /// </summary>
-            public string SocketType { get; set; }
+            public string? SocketType { get; set; }
 
             /// <summary>
             /// The cache size of the CPU.
@@ -348,7 +347,7 @@ namespace Problem2
             /// <summary>
             /// The form factor of the motherboard.
             /// </summary>
-            public string FormFactor { get; set; }
+            public string? FormFactor { get; set; }
 
             private int _hardDriveLimit;
 
@@ -364,17 +363,17 @@ namespace Problem2
             /// <summary>
             /// The CPU of the motherboard.
             /// </summary>
-            public CPU Cpu { get; set; }
+            public CPU? Cpu { get; set; }
 
             /// <summary>
             /// The memory of the motherboard.
             /// </summary>
-            public Memory Memory { get; set; }
+            public Memory? Memory { get; set; }
 
             /// <summary>
             /// The graphics card of the motherboard.
             /// </summary>
-            public GraphicsCard GraphicsCard { get; set; }
+            public GraphicsCard? GraphicsCard { get; set; }
         }
     }
 }

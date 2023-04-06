@@ -11,7 +11,7 @@ namespace UnitTesting
 
      
     [TestClass]
-    public class Problem3
+    public class ProblemThreeTests
     {
         /// <summary>
         /// A test method that verifies the DetermineMailbox method assigns the correct mailbox.
@@ -31,13 +31,13 @@ namespace UnitTesting
 
             WorkerPool workerPool = new WorkerPool(1);
             Worker worker = workerPool.AcquireWorker();
-            string expectedMailboxNumber = mail.Receiver.Address.GetHashCode().ToString();
+            string expectedAddress = mail.Receiver.Address.ToString();
 
             // Act
-            string actualMailboxNumber = worker.DetermineMailbox(mail);
+            string actualAddress = worker.DetermineMailbox(mail);
 
             // Assert
-            Assert.AreEqual(expectedMailboxNumber, actualMailboxNumber);
+            Assert.AreEqual(expectedAddress, actualAddress);
 
             workerPool.ReleaseWorker(worker);
         }

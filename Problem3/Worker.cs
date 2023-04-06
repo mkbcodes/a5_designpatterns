@@ -11,6 +11,7 @@ namespace Problem3
     /// </summary>
     public class Worker
     {
+        public IDispatcherObserver DispatcherObserver { get; set; }
         public static List<Mail> ReviewQueue = new List<Mail>();
 
         /// <summary>
@@ -25,11 +26,16 @@ namespace Problem3
         /// <returns>A string representing the mailbox number.</returns>
         public string DetermineMailbox(Mail mail)
         {
-            // Example implementation: Assign the mail to a mailbox based on the receiver's address
-            string mailboxNumber = mail.Receiver.Address.GetHashCode().ToString();
-            Console.WriteLine($"Mail from {mail.Sender.Name} to {mail.Receiver.Name} has been placed in mailbox {mailboxNumber}.");
+            if (mail == null || mail.Receiver == null || mail.Receiver.Address == null)
+            {
+                throw new ArgumentException("Mail, receiver, or receiver's address cannot be null.");
+            }
+
+            string mailboxNumber = mail.Receiver.Address;
+
             return mailboxNumber;
         }
+
 
         /// <summary>
         /// Handles flagged mail and places it in a review queue.
@@ -37,6 +43,11 @@ namespace Problem3
         /// <param name="mail">A Mail object.</param>
         public void HandleFlaggedMail(Mail mail)
         {
+            if (mail == null)
+            {
+                throw new ArgumentException("Mail object cannot be null.");
+            }
+
             if (mail.IsFlagged)
             {
                 // Add the mail to a review queue
@@ -45,12 +56,14 @@ namespace Problem3
             }
         }
 
+
         /// <summary>
         /// Returns to the dispatcher after processing the mail.
         /// </summary>
         public void ReturnToDispatcher()
         {
             // Notify the dispatcher that the worker is available for more work
+            DispatcherObserver.OnWorkerAvailable(this);
         }
     }
 

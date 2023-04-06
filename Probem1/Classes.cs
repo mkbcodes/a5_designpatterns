@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Problem1
+﻿namespace Problem1
 {
     public class Classes
     {
@@ -16,12 +10,12 @@ namespace Problem1
             /// <summary>
             /// The name of the toy.
             /// </summary>
-            public string Name { get; set; }
+            public string? Name { get; set; }
 
             /// <summary>
             /// A brief description of the toy.
             /// </summary>
-            public string Description { get; set; }
+            public string? Description { get; set; }
 
             /// <summary>
             /// The cost of the toy.
@@ -31,7 +25,7 @@ namespace Problem1
             /// <summary>
             /// The company that manufactured the toy.
             /// </summary>
-            public string ManufacturingCompany { get; set; }
+            public string? ManufacturingCompany { get; set; }
 
             /// <summary>
             /// The year the toy was manufactured.
@@ -84,12 +78,12 @@ namespace Problem1
             /// <summary>
             /// The model of the car.
             /// </summary>
-            public string Model { get; set; }
+            public string? Model { get; set; }
 
             /// <summary>
             /// The type of engine in the car.
             /// </summary>
-            public string EngineType { get; set; }
+            public string? EngineType { get; set; }
 
             /// <summary>
             /// Drives the car.
@@ -130,7 +124,7 @@ namespace Problem1
             /// <summary>
             /// The material the dollhouse is made of.
             /// </summary>
-            public string Material { get; set; }
+            public string? Material { get; set; }
 
             /// <summary>
             /// Indicates whether the dollhouse has lights.
@@ -175,7 +169,7 @@ namespace Problem1
                 /// <summary>
                 /// The material the stacker is made of.
                 /// </summary>
-                public string Material { get; set; }
+                public string? Material { get; set; }
 
                 /// <summary>
                 /// Indicates whether the stacker is flexible.
@@ -216,11 +210,11 @@ namespace Problem1
                 /// <summary>
                 /// The type of animal represented by the stuffed animal.
                 /// </summary>
-                public string AnimalType { get; set; }
+                public string? AnimalType { get; set; }
                 /// <summary>
                 /// The material the fur of the stuffed animal is made of.
                 /// </summary>
-                public string FurMaterial { get; set; }
+                public string? FurMaterial { get; set; }
 
                 /// <summary>
                 /// Indicates whether the stuffed animal makes a sound.

@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Problem4
 {
-    namespace Problem4
-    {
+
         /// <summary>
         /// A class that represents an auctioneer.
         /// </summary>
@@ -17,15 +16,12 @@ namespace Problem4
             /// <summary>
             /// The item that is being auctioned.
             /// </summary>
-            public AuctionItem Item { get; set; }
+            public AuctionItem? Item { get; set; }
 
             /// <summary>
             /// Initializes a new instance of the <see cref="Auctioneer"/> class.
             /// </summary>
-            public Auctioneer()
-            {
-                _observers = new List<IObserver>();
-            }
+            public Auctioneer() => _observers = new List<IObserver>();
 
             /// <summary>
             /// Registers an observer to the auctioneer.
@@ -77,7 +73,7 @@ namespace Problem4
             /// <returns>The highest bidder.</returns>
             public Bidder CloseAuction()
             {
-                Bidder highestBidder = null;
+                Bidder? highestBidder = null;
                 decimal highestBid = 0;
 
                 foreach (IObserver observer in _observers)
@@ -98,5 +94,5 @@ namespace Problem4
                 return highestBidder;
             }
         }
-    }
+    
 }
