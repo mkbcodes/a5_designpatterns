@@ -1,4 +1,5 @@
-using static Problem2.Classes;
+
+using Problem2;
 
 namespace UnitTesting
 {
