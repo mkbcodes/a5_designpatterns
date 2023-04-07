@@ -1,6 +1,6 @@
-using static Problem1.Classes.Dollhouse;
-using static Problem1.Classes;
 
+
+using Problem1;
 
 namespace UnitTesting
     {
